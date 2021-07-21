@@ -21,11 +21,16 @@ namespace Xadrez_Jogo.Tabuleiro
 
         }
 
-        public Tabuleiro(int linhas, int colunas, Peca[,] pecas)
+        public Tabuleiro(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
             this.pecas = new Peca[Linhas, Colunas];
+        }
+
+        public Peca peca(int linha, int coluna)
+        {
+            return pecas[linha, coluna];
         }
     }
 }
