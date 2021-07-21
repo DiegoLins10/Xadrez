@@ -7,8 +7,10 @@ namespace Xadrez_Jogo
     {
         static void Main(string[] args)
         {
-            Posicao p = new Posicao(3, 4);
-            Console.WriteLine(p);
+            var tab = new Xadrez_Jogo.Tabuleiro.Tabuleiro(8, 8);
+
+            Tela.ImprimirTabuleiro(tab);
+            Console.WriteLine();
         }
     }
 }
