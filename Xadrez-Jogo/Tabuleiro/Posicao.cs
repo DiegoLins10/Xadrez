@@ -1,12 +1,19 @@
 ﻿
-namespace tabuleiro
-{
+namespace Xadrez_Jogo.Tabuleiro
+{/*
+  * Nessa classe é onde será criada o objeto posicao do jogo.
+  */
     class Posicao
     {
+        /*
+         * Properties
+         */
         public int Linha { get; set; }
         public int Coluna { get; set; }
 
-
+        /*
+         * Construtores
+         */
         public Posicao()
         {
 
@@ -17,6 +24,9 @@ namespace tabuleiro
             Coluna = coluna;
         }
 
+        /*
+         * ToString
+         */
         public override string ToString()
         {
             return Linha +
