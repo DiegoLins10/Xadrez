@@ -1,5 +1,4 @@
-﻿
-using Xadrez_Jogo.Tabuleiro.Enums;
+﻿using Xadrez_Jogo.Tabuleiro.Enums;
 
 namespace Xadrez_Jogo.Tabuleiro
 {   /*
