@@ -1,5 +1,5 @@
 ﻿
-namespace Xadrez_Jogo.Tabuleiro
+namespace Xadrez_Jogo.tabuleiro
 {/*
   * Nessa classe é onde será criada o objeto posicao do jogo.
   */
