@@ -1,7 +1,7 @@
 ﻿using System;
 using Xadrez_Jogo;
 
-namespace Xadrez_Jogo.Tabuleiro
+namespace Xadrez_Jogo.tabuleiro
 {
     class Tela
     {
