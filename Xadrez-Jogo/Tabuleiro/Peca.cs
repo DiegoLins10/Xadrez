@@ -1,6 +1,6 @@
-﻿using Xadrez_Jogo.Tabuleiro.Enums;
+﻿using Xadrez_Jogo.tabuleiro.Enums;
 
-namespace Xadrez_Jogo.Tabuleiro
+namespace Xadrez_Jogo.tabuleiro
 {   /*
      * Nessa classe é onde sera registrado o objeto peca do jogo
      */
@@ -19,9 +19,9 @@ namespace Xadrez_Jogo.Tabuleiro
 
         }
 
-        public Peca(Posicao posicao, Cor cor, int qteMovimentos, Tabuleiro tabuleiro)
+        public Peca( Tabuleiro tabuleiro, Cor cor)
         {
-            Posicao = posicao;
+            Posicao = null;
             Cor = cor;
             QteMovimentos = 0;
             Tabuleiro = tabuleiro;
