@@ -1,5 +1,5 @@
 ﻿
-namespace Xadrez_Jogo.Tabuleiro
+namespace Xadrez_Jogo.tabuleiro
 {
     /*
      * Classe que vai representar o objeto tabuleiro 
@@ -28,9 +28,21 @@ namespace Xadrez_Jogo.Tabuleiro
             this.pecas = new Peca[Linhas, Colunas];
         }
 
+        /*
+         * Retorna as pecas do tabuleiro
+         */
         public Peca peca(int linha, int coluna)
         {
             return pecas[linha, coluna];
+        }
+
+        /*
+         *Colocando um objeto peca em uma posicao 
+         */
+        public void colocarPeca(Peca p, Posicao pos)
+        {
+            pecas[pos.Linha, pos.Coluna] = p;
+            p.Posicao = pos;
         }
     }
 }
