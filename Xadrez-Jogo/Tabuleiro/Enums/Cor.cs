@@ -1,5 +1,5 @@
 ﻿
-namespace Xadrez_Jogo.Tabuleiro.Enums
+namespace Xadrez_Jogo.tabuleiro.Enums
 {/*
   * Aqui é onde fica a enumeracao do nosso projeto que vai representar as cores das pecas
   */
