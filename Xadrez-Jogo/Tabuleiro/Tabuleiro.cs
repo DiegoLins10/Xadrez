@@ -1,4 +1,6 @@
 ﻿
+using Xadrez_Jogo.tabuleiro.Exceptions;
+
 namespace Xadrez_Jogo.tabuleiro
 {
     /*
@@ -6,12 +8,12 @@ namespace Xadrez_Jogo.tabuleiro
      */
     class Tabuleiro
     {
-      /*
-      * Properties e atributos, usando um atributo matriz do tipo Peca para representar o tabuleiro
-      */
+        /*
+        * Properties e atributos, usando um atributo matriz do tipo Peca para representar o tabuleiro
+        */
         public int Linhas { get; set; }
         public int Colunas { get; set; }
-        private Peca[,] pecas; 
+        private Peca[,] pecas;
 
         /*
          * Construtores
@@ -36,13 +38,54 @@ namespace Xadrez_Jogo.tabuleiro
             return pecas[linha, coluna];
         }
 
+        public Peca peca(Posicao pos)
+        {
+            return pecas[pos.Linha, pos.Coluna];
+        }
+
+        /*
+         * Verificando se existe uma pesa em determinada posicao
+         */
+        public bool existePeca(Posicao pos)
+        {
+            validarPosicao(pos);
+            return peca(pos) != null;
+        }
+
         /*
          *Colocando um objeto peca em uma posicao 
          */
         public void colocarPeca(Peca p, Posicao pos)
         {
+            if (existePeca(pos))
+            {
+                throw new TabuleiroException("Já existe uma peca nessa posicao!");
+            }
             pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
+        }
+
+        /*
+         * Validando posicao recebida
+         */
+        public bool posicaoValida(Posicao pos)
+        {
+            if(pos.Linha < 0 || pos.Linha>=Linhas || pos.Coluna<0 || pos.Coluna >= Colunas)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /*
+         * Chama a exception personalizada
+         */
+        public void validarPosicao(Posicao pos)
+        {
+            if (!posicaoValida(pos))
+            {
+                throw new TabuleiroException("Posicao invalida!!!");
+            }
         }
     }
 }
