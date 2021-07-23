@@ -14,6 +14,7 @@ namespace Xadrez_Jogo.tabuleiro
             //linhas
             for (int i = 0; i < tab.Linhas; i++)
             {
+                Console.Write(8 - i + " ");
                 //colunas
                 for (int j = 0; j < tab.Colunas; j++)
                 {
@@ -23,10 +24,30 @@ namespace Xadrez_Jogo.tabuleiro
                     }
                     else
                     {
-                        Console.Write(tab.peca(i, j) + " ");
+                        Tela.ImprimirPeca(tab.peca(i, j));
+                        Console.Write(" ");
                     }
                 }
                 Console.WriteLine();
+            }
+            Console.WriteLine("  A B C D E F G H");
+        }
+
+        /*
+         * Metodo para mudar a cor da peca
+         */
+        public static void ImprimirPeca(Peca peca)
+        {
+            if(peca.Cor == Enums.Cor.Branca)
+            {
+                Console.Write(peca);
+            }
+            else
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(peca);
+                Console.ForegroundColor = aux;
             }
         }
     }
