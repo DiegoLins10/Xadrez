@@ -22,6 +22,12 @@ namespace Xadrez_Jogo
                     Console.WriteLine();
                     Console.Write("Digite a posição origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] possicoesPossiveis = partida.tab.peca(origem).movimentosPosiveis();
+
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.tab, possicoesPossiveis);
+
                     Console.Write("Digite a posição destino: ");
                     Posicao destino= Tela.lerPosicaoXadrez().toPosicao();
 

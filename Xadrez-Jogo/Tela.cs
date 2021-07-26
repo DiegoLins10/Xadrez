@@ -19,19 +19,40 @@ namespace Xadrez_Jogo.tabuleiro
                 //colunas
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (tab.peca(i, j) == null) // verificando se a posicao do tabuleiro está vazia
-                    {
-                        Console.Write("- ");
-                    }
-                    else
-                    {
-                        Tela.ImprimirPeca(tab.peca(i, j));
-                        Console.Write(" ");
-                    }
+                    Tela.ImprimirPeca(tab.peca(i, j));
                 }
                 Console.WriteLine();
             }
             Console.WriteLine("  A B C D E F G H");
+        }
+
+        public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] possicoesPossiveis)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
+
+            //linhas
+            for (int i = 0; i < tab.Linhas; i++)
+            {
+                Console.Write(8 - i + " ");
+                //colunas
+                for (int j = 0; j < tab.Colunas; j++)
+                {
+                    if(possicoesPossiveis[i, j])
+                    {
+                        Console.BackgroundColor = fundoAlterado; // mudando cor pra mostrar aonde a peca pode se mexer
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = fundoOriginal;
+                    }
+                    Tela.ImprimirPeca(tab.peca(i, j));
+                    Console.BackgroundColor = fundoOriginal;
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("  A B C D E F G H");
+            Console.BackgroundColor = fundoOriginal;
         }
 
         /*
@@ -51,16 +72,24 @@ namespace Xadrez_Jogo.tabuleiro
          */
         public static void ImprimirPeca(Peca peca)
         {
-            if(peca.Cor == Enums.Cor.Branca)
+            if (peca == null) // verificando se a posicao do tabuleiro está vazia
             {
-                Console.Write(peca);
+                Console.Write("- ");
             }
             else
             {
-                ConsoleColor aux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(peca);
-                Console.ForegroundColor = aux;
+                if (peca.Cor == Enums.Cor.Branca)
+                {
+                    Console.Write(peca);
+                }
+                else
+                {
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(peca);
+                    Console.ForegroundColor = aux;
+                }
+                Console.Write(" ");
             }
         }
     }

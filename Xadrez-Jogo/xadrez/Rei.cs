@@ -23,6 +23,7 @@ namespace Xadrez_Jogo.xadrez
 
         /*
          * Verifica se a pesa pdoe mover para a posição
+         * ou se tem uma peca adversaria
          * conforme as regras do xadrez
          */
         private bool PodeMover(Posicao pos)
@@ -35,6 +36,7 @@ namespace Xadrez_Jogo.xadrez
          * sobrescrevendo metodo abstract da classe pai
          * aqui é colocada a regra de movimentãção do rei
          * esse metodo está atribuindo as regras para onde o rei pode se mexer.
+         * retorna uma matriz com os movimento possiveis de um rei
          */
         public override bool[,] movimentosPosiveis()
         {
@@ -90,6 +92,7 @@ namespace Xadrez_Jogo.xadrez
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+            return mat;
         }
     }
 }
