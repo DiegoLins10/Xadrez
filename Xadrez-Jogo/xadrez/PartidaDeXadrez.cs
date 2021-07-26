@@ -35,6 +35,32 @@ namespace Xadrez_Jogo.xadrez
             tab.colocarPeca(p, destino);
         }
 
+        /*
+         * Realizada a joga e quando acaba o turno
+         * soma +1 e depois muda o jogador que vai jogar
+         */
+        public void RealizaJogada(Posicao origem, Posicao destino)
+        {
+            ExecutaMovimento(origem, destino);
+            turno++;
+            mudaJogador();
+        }
+
+        /*
+         * Muda o jogador que vai jogar
+         */
+        private void mudaJogador()
+        {
+            if(jogadorAtual == Cor.Branca)
+            {
+                jogadorAtual = Cor.Preta
+            }
+            else
+            {
+                jogadorAtual = Cor.Branca;
+            }
+        }
+
 
         /*
          * Colocando as peças no tabuleiro
