@@ -14,6 +14,7 @@ namespace Xadrez_Jogo.xadrez
         public bool Terminada { get; private set; }
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
+        public bool Xeque { get; private set; }
 
         /*
          * Construtores
@@ -32,7 +33,7 @@ namespace Xadrez_Jogo.xadrez
         /*
          * Metodo que executa o movimento das peças
          */
-        public void ExecutaMovimento(Posicao origem, Posicao destino)
+        public Peca ExecutaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.RetirarPeca(origem); 
             p.IncrementarQteMovimentos();
@@ -42,6 +43,22 @@ namespace Xadrez_Jogo.xadrez
             {
                 capturadas.Add(PecaCapturada);
             }
+            return PecaCapturada;
+        }
+
+        /*
+         * Metodo para desfazer o movimento de uma jogada invalida
+         */
+        public void DesfazOMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
+        {
+            Peca p = tab.RetirarPeca(destino);
+            p.DecrementarQteMovimentos();
+            if(pecaCapturada != null)
+            {
+                tab.colocarPeca(pecaCapturada, destino);
+                capturadas.Remove(pecaCapturada);
+            }
+            tab.colocarPeca(p, origem);
         }
 
         /*
@@ -50,7 +67,22 @@ namespace Xadrez_Jogo.xadrez
          */
         public void RealizaJogada(Posicao origem, Posicao destino)
         {
-            ExecutaMovimento(origem, destino);
+            Peca pecaCapturada = ExecutaMovimento(origem, destino);
+
+            if (EstaEmCheque(jogadorAtual))
+            {
+                DesfazOMovimento(origem, destino, pecaCapturada);
+                throw new TabuleiroException("Voce nao pode se colocar em cheque!");
+            }
+            if (EstaEmCheque(Adversaria(jogadorAtual)))
+            {
+                Xeque = true;
+            }
+            else
+            {
+                Xeque = false;
+            }
+
             turno++;
             mudaJogador();
         }
@@ -100,6 +132,7 @@ namespace Xadrez_Jogo.xadrez
 
         /*
          * retorna todas as pecas capturadas de uma cor
+         * que estao em um conjunto
          */
         public HashSet<Peca> pecasCapturadas(Cor cor)
         {
@@ -114,6 +147,10 @@ namespace Xadrez_Jogo.xadrez
             return aux;
         }
 
+        /*
+         * Criando dois conjutos das pecas que estão em jogo
+         * pela cor
+         */
         public HashSet<Peca> pecasEmJogo(Cor cor)
         {
             HashSet<Peca> aux = new HashSet<Peca>();
@@ -126,6 +163,58 @@ namespace Xadrez_Jogo.xadrez
             }
             aux.ExceptWith(pecasCapturadas(cor));
             return aux;
+        }
+
+        /*
+         * Verifica se a peca é adversaria
+         */
+        private Cor Adversaria(Cor cor)
+        {
+            if(cor == Cor.Branca)
+            {
+                return Cor.Preta;
+            }
+            else
+            {
+                return Cor.Branca;
+            }
+        }
+
+        /*
+         * achando o rei no tabuleiro
+         * e retornando
+         */
+        private Peca rei(Cor cor)
+        {
+            foreach(Peca x in pecasEmJogo(cor))
+            {
+                if(x is Rei) // verificando se x é uma instancia de Rei
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+
+        /*
+         * Metodo para ver se o rei está em cheque 
+         */
+        public bool EstaEmCheque(Cor cor)
+        {
+            Peca R = rei(cor);
+            if(R == null)
+            {
+                throw new TabuleiroException("Nao tem um rei da " + cor + " no tabuleiro");
+            }
+            foreach (Peca x in pecasEmJogo(Adversaria(cor)))
+            {
+                bool[,] mat = x.movimentosPosiveis();
+                if (mat[R.Posicao.Linha, R.Posicao.Coluna])
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /*

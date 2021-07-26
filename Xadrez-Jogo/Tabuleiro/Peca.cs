@@ -35,6 +35,14 @@ namespace Xadrez_Jogo.tabuleiro
         {
             QteMovimentos++;
         }
+        
+        /*
+         * Decrementa a quantidade de movimentos
+         */
+        public void DecrementarQteMovimentos()
+        {
+            QteMovimentos--;
+        }
 
         /*
          * Verificar se a peca nao esta bloqueada de movimentos
