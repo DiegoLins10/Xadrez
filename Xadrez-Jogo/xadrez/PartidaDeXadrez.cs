@@ -67,6 +67,14 @@ namespace Xadrez_Jogo.xadrez
             }
         }
 
+        public void validarPosicaoDeDestino(Posicao origem, Posicao destino)
+        {
+            if (!tab.peca(origem).podeMoverPara(destino))
+            {
+                throw new TabuleiroException("Posicao de destino invalida!");
+            }
+        }
+
         /*
          * Muda o jogador que vai jogar
          */

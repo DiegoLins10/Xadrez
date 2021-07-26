@@ -56,6 +56,14 @@ namespace Xadrez_Jogo.tabuleiro
         }
 
         /*
+         * Diz se a peca pode mover para determinada posicao
+         */
+        public bool podeMoverPara(Posicao pos)
+        {
+            return movimentosPosiveis()[pos.Linha, pos.Coluna];
+        }
+
+        /*
          * Metodo abstrato da super classe
          * pois cada peça é generica e tem regras diferentes.
          * deve ser implementada na classe filha
