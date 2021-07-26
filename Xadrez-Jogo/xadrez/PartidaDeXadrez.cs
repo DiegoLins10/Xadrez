@@ -22,6 +22,9 @@ namespace Xadrez_Jogo.xadrez
             colocarPecas();
         }
 
+        /*
+         * Metodo que executa o movimento das peças
+         */
         public void ExecutaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.RetirarPeca(origem);
@@ -30,6 +33,10 @@ namespace Xadrez_Jogo.xadrez
             tab.colocarPeca(p, destino);
         }
 
+
+        /*
+         * Colocando as peças no tabuleiro
+         */
         private void colocarPecas()
         {
             tab.colocarPeca(new Torre(tab, Cor.Branca), new PosicaoXadrez('c', 1).toPosicao());
