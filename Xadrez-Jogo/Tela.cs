@@ -7,6 +7,9 @@ namespace Xadrez_Jogo.tabuleiro
 {
     class Tela
     {
+        /*
+         * imprime as informacoes da partida na tela
+         */
         public static void imprimirPartida(PartidaDeXadrez partida)
         {
             ImprimirTabuleiro(partida.tab);
@@ -17,6 +20,9 @@ namespace Xadrez_Jogo.tabuleiro
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
         }
 
+        /*
+         * Imprime as pecas capturadas no jogo
+         */
         public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
         {
             Console.WriteLine("Pecas Capturadas: ");
@@ -31,6 +37,10 @@ namespace Xadrez_Jogo.tabuleiro
             Console.WriteLine();
         }
 
+        /*
+         * Imprime o conjunto que está as pecas 
+         * capturadas do jogo
+         */
         public static void imprimirConjunto(HashSet<Peca> conjunto)
         {
             Console.Write("[");
