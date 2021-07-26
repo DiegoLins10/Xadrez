@@ -1,5 +1,6 @@
 ﻿using System;
 using Xadrez_Jogo;
+using Xadrez_Jogo.xadrez;
 
 namespace Xadrez_Jogo.tabuleiro
 {
@@ -31,6 +32,18 @@ namespace Xadrez_Jogo.tabuleiro
                 Console.WriteLine();
             }
             Console.WriteLine("  A B C D E F G H");
+        }
+
+        /*
+         * metodo static lendo a posicao que o usuario digita
+         * e passando pro construtor posição de xadres
+         */
+        public static PosicaoXadrez lerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
         }
 
         /*
