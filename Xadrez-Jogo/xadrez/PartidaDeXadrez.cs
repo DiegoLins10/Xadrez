@@ -1,14 +1,15 @@
 ﻿using System;
 using Xadrez_Jogo.tabuleiro;
 using Xadrez_Jogo.tabuleiro.Enums;
+using Xadrez_Jogo.tabuleiro.Exceptions;
 
 namespace Xadrez_Jogo.xadrez
 {
     class PartidaDeXadrez
     {
         public Tabuleiro tab { get; private set; }
-        private int turno;
-        private Cor jogadorAtual;
+        public int turno { get; private set; }
+        public Cor jogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
 
 
@@ -47,13 +48,33 @@ namespace Xadrez_Jogo.xadrez
         }
 
         /*
+         * Metodo para validar as posicoes
+         * e impedir o usuario de mover pecas erradas
+         */
+        public void validarPosicaoDeOrigem(Posicao pos)
+        {
+            if(tab.peca(pos) == null)
+            {
+                throw new TabuleiroException("Nao existe peca na posicao de origem escolhida!");
+            }
+            if(jogadorAtual != tab.peca(pos).Cor)
+            {
+                throw new TabuleiroException("A peca de origem escolhida nao é sua!");
+            }
+            if (!tab.peca(pos).existeMovimentosPossiveis())
+            {
+                throw new TabuleiroException("Nao há movimentos para a peca de origem!");
+            }
+        }
+
+        /*
          * Muda o jogador que vai jogar
          */
         private void mudaJogador()
         {
             if(jogadorAtual == Cor.Branca)
             {
-                jogadorAtual = Cor.Preta
+                jogadorAtual = Cor.Preta;
             }
             else
             {

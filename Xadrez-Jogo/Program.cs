@@ -16,23 +16,36 @@ namespace Xadrez_Jogo
 
                 while (!partida.Terminada)
                 {
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.tab);
+                    try
+                    {
+                        Console.Clear();
+                        Tela.ImprimirTabuleiro(partida.tab);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno: " + partida.turno);
+                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
 
-                    Console.WriteLine();
-                    Console.Write("Digite a posição origem: ");
-                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                        Console.WriteLine();
+                        Console.Write("Digite a posição origem: ");
+                        Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                        partida.validarPosicaoDeOrigem(origem);
 
-                    bool[,] possicoesPossiveis = partida.tab.peca(origem).movimentosPosiveis();
+                        bool[,] possicoesPossiveis = partida.tab.peca(origem).movimentosPosiveis();
 
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.tab, possicoesPossiveis);
+                        Console.Clear();
+                        Tela.ImprimirTabuleiro(partida.tab, possicoesPossiveis);
 
-                    Console.Write("Digite a posição destino: ");
-                    Posicao destino= Tela.lerPosicaoXadrez().toPosicao();
+                        Console.Write("Digite a posição destino: ");
+                        Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                    partida.ExecutaMovimento(origem, destino);
-
+                        partida.RealizaJogada(origem, destino);
+                    }
+                    catch(TabuleiroException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine();
+                        Console.WriteLine("Aperte enter para tentar novamente...");
+                        Console.ReadLine();
+                    }
                 }
 
                 

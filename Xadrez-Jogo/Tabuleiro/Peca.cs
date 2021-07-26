@@ -20,7 +20,7 @@ namespace Xadrez_Jogo.tabuleiro
 
         }
 
-        public Peca( Tabuleiro tabuleiro, Cor cor)
+        public Peca(Tabuleiro tabuleiro, Cor cor)
         {
             Posicao = null;
             Cor = cor;
@@ -37,11 +37,30 @@ namespace Xadrez_Jogo.tabuleiro
         }
 
         /*
+         * Verificar se a peca nao esta bloqueada de movimentos
+         */
+        public bool existeMovimentosPossiveis()
+        {
+            bool[,] mat = movimentosPosiveis();
+            for (int i = 0; i < Tab.Linhas; i++)
+            {
+                for (int j = 0; j < Tab.Colunas; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /*
          * Metodo abstrato da super classe
          * pois cada peça é generica e tem regras diferentes.
          * deve ser implementada na classe filha
          */
         public abstract bool[,] movimentosPosiveis();
-        
+
     }
 }
