@@ -1,6 +1,7 @@
 ﻿using System;
 using Xadrez_Jogo.tabuleiro;
 using Xadrez_Jogo.tabuleiro.Enums;
+using Xadrez_Jogo.tabuleiro.Exceptions;
 using Xadrez_Jogo.xadrez;
 
 namespace Xadrez_Jogo
@@ -9,20 +10,20 @@ namespace Xadrez_Jogo
     {
         static void Main(string[] args)
         {
-            Tabuleiro tab = new Tabuleiro(8, 8);
+            try
+            {
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-            tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-            tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 3));
-            tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(2, 4));
-
-            tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(3, 5));
-            tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(3, 6));
-
-            Tela.ImprimirTabuleiro(tab);
-
-            PosicaoXadrez pos = new PosicaoXadrez('a', 8);
-
-            Console.WriteLine(pos.toPosicao());
+                Tela.ImprimirTabuleiro(partida.tab);
+            }
+            catch(TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
