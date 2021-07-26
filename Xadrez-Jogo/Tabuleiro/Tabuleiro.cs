@@ -66,6 +66,21 @@ namespace Xadrez_Jogo.tabuleiro
         }
 
         /*
+         * Metodo para retirar peças
+         */
+        public Peca RetirarPeca(Posicao pos)
+        {
+            if(peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.Posicao = null;
+            pecas[pos.Linha, pos.Coluna] = null;
+            return aux;
+        }
+
+        /*
          * Validando posicao recebida
          */
         public bool posicaoValida(Posicao pos)
