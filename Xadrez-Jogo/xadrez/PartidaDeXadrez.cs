@@ -9,8 +9,9 @@ namespace Xadrez_Jogo.xadrez
         public Tabuleiro tab { get; private set; }
         private int turno;
         private Cor jogadorAtual;
+        public bool Terminada { get; private set; }
 
-  
+
         /*
          * Construtores
          */
@@ -19,6 +20,7 @@ namespace Xadrez_Jogo.xadrez
             this.tab = new Tabuleiro(8,8);
             this.turno = 1;
             this.jogadorAtual = Cor.Branca;
+            Terminada = false;
             colocarPecas();
         }
 
@@ -27,7 +29,7 @@ namespace Xadrez_Jogo.xadrez
          */
         public void ExecutaMovimento(Posicao origem, Posicao destino)
         {
-            Peca p = tab.RetirarPeca(origem);
+            Peca p = tab.RetirarPeca(origem); 
             p.IncrementarQteMovimentos();
             Peca Pecacapturada = tab.RetirarPeca(destino);
             tab.colocarPeca(p, destino);
