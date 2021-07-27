@@ -19,7 +19,7 @@ namespace Xadrez_Jogo
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirPartida(partida);
+                        Tela.ImprimirPartida(partida);
 
                         Console.WriteLine();
                         Console.Write("Digite a posição origem: ");

@@ -46,49 +46,49 @@ namespace Xadrez_Jogo.xadrez
 
             //acima
             pos.definirValores(Posicao.Linha - 1, Posicao.Coluna);
-            if(Tab.posicaoValida(pos) && PodeMover(pos))
+            if(Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             //nordeste
             pos.definirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
-            if(Tab.posicaoValida(pos) && PodeMover(pos))
+            if(Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             //direita
             pos.definirValores(Posicao.Linha, Posicao.Coluna + 1);
-            if(Tab.posicaoValida(pos) && PodeMover(pos))
+            if(Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             //sudeste
             pos.definirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
-            if(Tab.posicaoValida(pos) && PodeMover(pos))
+            if(Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             //abaixo
             pos.definirValores(Posicao.Linha + 1, Posicao.Coluna);
-            if(Tab.posicaoValida(pos) && PodeMover(pos))
+            if(Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             //sudoeste
             pos.definirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
-            if (Tab.posicaoValida(pos) && PodeMover(pos))
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             //esquerda
             pos.definirValores(Posicao.Linha, Posicao.Coluna - 1);
-            if (Tab.posicaoValida(pos) && PodeMover(pos))
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
             // noroeste
             pos.definirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
-            if (Tab.posicaoValida(pos) && PodeMover(pos))
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }

@@ -38,7 +38,7 @@ namespace Xadrez_Jogo.xadrez
             Peca p = tab.RetirarPeca(origem); 
             p.IncrementarQteMovimentos();
             Peca PecaCapturada = tab.RetirarPeca(destino);
-            tab.colocarPeca(p, destino);
+            tab.ColocarPeca(p, destino);
             if(PecaCapturada != null)
             {
                 capturadas.Add(PecaCapturada);
@@ -55,10 +55,10 @@ namespace Xadrez_Jogo.xadrez
             p.DecrementarQteMovimentos();
             if(pecaCapturada != null)
             {
-                tab.colocarPeca(pecaCapturada, destino);
+                tab.ColocarPeca(pecaCapturada, destino);
                 capturadas.Remove(pecaCapturada);
             }
-            tab.colocarPeca(p, origem);
+            tab.ColocarPeca(p, origem);
         }
 
         /*
@@ -222,7 +222,7 @@ namespace Xadrez_Jogo.xadrez
          */
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
-            tab.colocarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+            tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
             pecas.Add(peca);
         }
 

@@ -10,11 +10,11 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * imprime as informacoes da partida na tela
          */
-        public static void imprimirPartida(PartidaDeXadrez partida)
+        public static void ImprimirPartida(PartidaDeXadrez partida)
         {
             ImprimirTabuleiro(partida.tab);
             Console.WriteLine();
-            imprimirPecasCapturadas(partida);
+            ImprimirPecasCapturadas(partida);
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
@@ -27,16 +27,16 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * Imprime as pecas capturadas no jogo
          */
-        public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
         {
             Console.WriteLine("Pecas Capturadas: ");
             Console.Write("Brancas: ");
-            imprimirConjunto(partida.PecasCapturadas(Enums.Cor.Branca));
+            ImprimirConjunto(partida.PecasCapturadas(Enums.Cor.Branca));
             Console.WriteLine();
             Console.Write("Pretas: ");
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            imprimirConjunto(partida.PecasCapturadas(Enums.Cor.Preta));
+            ImprimirConjunto(partida.PecasCapturadas(Enums.Cor.Preta));
             Console.ForegroundColor = aux;
             Console.WriteLine();
         }
@@ -45,7 +45,7 @@ namespace Xadrez_Jogo.tabuleiro
          * Imprime o conjunto que está as pecas 
          * capturadas do jogo
          */
-        public static void imprimirConjunto(HashSet<Peca> conjunto)
+        public static void ImprimirConjunto(HashSet<Peca> conjunto)
         {
             Console.Write("[");
             foreach(Peca x in conjunto)

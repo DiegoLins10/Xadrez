@@ -46,18 +46,18 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * Verificando se existe uma pesa em determinada posicao
          */
-        public bool existePeca(Posicao pos)
+        public bool ExistePeca(Posicao pos)
         {
-            validarPosicao(pos);
+            ValidarPosicao(pos);
             return peca(pos) != null;
         }
 
         /*
          *Colocando um objeto peca em uma posicao 
          */
-        public void colocarPeca(Peca p, Posicao pos)
+        public void ColocarPeca(Peca p, Posicao pos)
         {
-            if (existePeca(pos))
+            if (ExistePeca(pos))
             {
                 throw new TabuleiroException("Já existe uma peca nessa posicao!");
             }
@@ -83,7 +83,7 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * Validando posicao recebida
          */
-        public bool posicaoValida(Posicao pos)
+        public bool PosicaoValida(Posicao pos)
         {
             if(pos.Linha < 0 || pos.Linha>=Linhas || pos.Coluna<0 || pos.Coluna >= Colunas)
             {
@@ -95,9 +95,9 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * Chama a exception personalizada
          */
-        public void validarPosicao(Posicao pos)
+        public void ValidarPosicao(Posicao pos)
         {
-            if (!posicaoValida(pos))
+            if (!PosicaoValida(pos))
             {
                 throw new TabuleiroException("Posicao invalida!!!");
             }
