@@ -68,7 +68,7 @@ namespace Xadrez_Jogo.tabuleiro
                 //colunas
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    Tela.ImprimirPeca(tab.peca(i, j));
+                    Tela.ImprimirPeca(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
@@ -95,7 +95,7 @@ namespace Xadrez_Jogo.tabuleiro
                     {
                         Console.BackgroundColor = fundoOriginal;
                     }
-                    Tela.ImprimirPeca(tab.peca(i, j));
+                    Tela.ImprimirPeca(tab.Peca(i, j));
                     Console.BackgroundColor = fundoOriginal;
                 }
                 Console.WriteLine();
@@ -108,7 +108,7 @@ namespace Xadrez_Jogo.tabuleiro
          * metodo static lendo a posicao que o usuario digita
          * e passando pro construtor posição de xadres
          */
-        public static PosicaoXadrez lerPosicaoXadrez()
+        public static PosicaoXadrez LerPosicaoXadrez()
         {
             string s = Console.ReadLine();
             char coluna = s[0];

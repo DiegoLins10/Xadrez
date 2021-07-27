@@ -93,15 +93,15 @@ namespace Xadrez_Jogo.xadrez
          */
         public void ValidarPosicaoDeOrigem(Posicao pos)
         {
-            if(tab.peca(pos) == null)
+            if(tab.Peca(pos) == null)
             {
                 throw new TabuleiroException("Nao existe peca na posicao de origem escolhida!");
             }
-            if(jogadorAtual != tab.peca(pos).Cor)
+            if(jogadorAtual != tab.Peca(pos).Cor)
             {
                 throw new TabuleiroException("A peca de origem escolhida nao é sua!");
             }
-            if (!tab.peca(pos).existeMovimentosPossiveis())
+            if (!tab.Peca(pos).ExisteMovimentosPossiveis())
             {
                 throw new TabuleiroException("Nao há movimentos para a peca de origem!");
             }
@@ -109,7 +109,7 @@ namespace Xadrez_Jogo.xadrez
 
         public void ValidarPosicaoDeDestino(Posicao origem, Posicao destino)
         {
-            if (!tab.peca(origem).podeMoverPara(destino))
+            if (!tab.Peca(origem).PodeMoverPara(destino))
             {
                 throw new TabuleiroException("Posicao de destino invalida!");
             }
@@ -208,7 +208,7 @@ namespace Xadrez_Jogo.xadrez
             }
             foreach (Peca x in PecasEmJogo(Adversaria(cor)))
             {
-                bool[,] mat = x.movimentosPosiveis();
+                bool[,] mat = x.MovimentosPosiveis();
                 if (mat[R.Posicao.Linha, R.Posicao.Coluna])
                 {
                     return true;
@@ -217,12 +217,24 @@ namespace Xadrez_Jogo.xadrez
             return false;
         }
 
+        public bool TesteXequemate(Cor cor)
+        {
+            if (!EstaEmCheque(cor))
+            {
+                return false;
+            }
+            foreach(Peca x in PecasEmJogo(cor))
+            {
+                bool[,] mat = x.MovimentosPosiveis;
+            }
+        }
+
         /*
          * Metodo para colocar uma nova peca
          */
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
-            tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
+            tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
             pecas.Add(peca);
         }
 

@@ -23,17 +23,17 @@ namespace Xadrez_Jogo
 
                         Console.WriteLine();
                         Console.Write("Digite a posição origem: ");
-                        Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                        Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
                         partida.ValidarPosicaoDeOrigem(origem);
 
-                        bool[,] possicoesPossiveis = partida.tab.peca(origem).movimentosPosiveis();
+                        bool[,] possicoesPossiveis = partida.tab.Peca(origem).MovimentosPosiveis();
 
                         Console.Clear();
                         Tela.ImprimirTabuleiro(partida.tab, possicoesPossiveis);
 
                         Console.WriteLine();
                         Console.Write("Digite a posição destino: ");
-                        Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+                        Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
                         partida.ValidarPosicaoDeDestino(origem, destino);
 
                         partida.RealizaJogada(origem, destino);

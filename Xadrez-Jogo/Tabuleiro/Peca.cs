@@ -47,9 +47,9 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * Verificar se a peca nao esta bloqueada de movimentos
          */
-        public bool existeMovimentosPossiveis()
+        public bool ExisteMovimentosPossiveis()
         {
-            bool[,] mat = movimentosPosiveis();
+            bool[,] mat = MovimentosPosiveis();
             for (int i = 0; i < Tab.Linhas; i++)
             {
                 for (int j = 0; j < Tab.Colunas; j++)
@@ -66,9 +66,9 @@ namespace Xadrez_Jogo.tabuleiro
         /*
          * Diz se a peca pode mover para determinada posicao
          */
-        public bool podeMoverPara(Posicao pos)
+        public bool PodeMoverPara(Posicao pos)
         {
-            return movimentosPosiveis()[pos.Linha, pos.Coluna];
+            return MovimentosPosiveis()[pos.Linha, pos.Coluna];
         }
 
         /*
@@ -76,7 +76,7 @@ namespace Xadrez_Jogo.tabuleiro
          * pois cada peça é generica e tem regras diferentes.
          * deve ser implementada na classe filha
          */
-        public abstract bool[,] movimentosPosiveis();
+        public abstract bool[,] MovimentosPosiveis();
 
     }
 }

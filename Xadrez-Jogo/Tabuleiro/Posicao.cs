@@ -28,7 +28,7 @@ namespace Xadrez_Jogo.tabuleiro
          * esse metodo está definindo os valores das regras
          * ou seja ela está ajudando atribuir a regra de cada peça
          */
-        public void definirValores(int linha, int coluna)
+        public void DefinirValores(int linha, int coluna)
         {
             Linha = linha;
             Coluna = coluna;

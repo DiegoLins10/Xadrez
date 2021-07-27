@@ -25,7 +25,7 @@ namespace Xadrez_Jogo.xadrez
         /*
          * 
          */
-        public Posicao toPosicao()
+        public Posicao ToPosicao()
         {
             return new Posicao(8 - Linha, Coluna - 'a');
         }
