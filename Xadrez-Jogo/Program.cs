@@ -24,7 +24,7 @@ namespace Xadrez_Jogo
                         Console.WriteLine();
                         Console.Write("Digite a posição origem: ");
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
-                        partida.validarPosicaoDeOrigem(origem);
+                        partida.ValidarPosicaoDeOrigem(origem);
 
                         bool[,] possicoesPossiveis = partida.tab.peca(origem).movimentosPosiveis();
 
@@ -34,7 +34,7 @@ namespace Xadrez_Jogo
                         Console.WriteLine();
                         Console.Write("Digite a posição destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
-                        partida.validarPosicaoDeDestino(origem, destino);
+                        partida.ValidarPosicaoDeDestino(origem, destino);
 
                         partida.RealizaJogada(origem, destino);
                     }

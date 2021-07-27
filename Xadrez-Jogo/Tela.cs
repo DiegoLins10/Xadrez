@@ -18,6 +18,10 @@ namespace Xadrez_Jogo.tabuleiro
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            if(partida.Xeque)
+            {
+                Console.WriteLine("XEQUE!!");
+            }
         }
 
         /*
@@ -27,12 +31,12 @@ namespace Xadrez_Jogo.tabuleiro
         {
             Console.WriteLine("Pecas Capturadas: ");
             Console.Write("Brancas: ");
-            imprimirConjunto(partida.pecasCapturadas(Enums.Cor.Branca));
+            imprimirConjunto(partida.PecasCapturadas(Enums.Cor.Branca));
             Console.WriteLine();
             Console.Write("Pretas: ");
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            imprimirConjunto(partida.pecasCapturadas(Enums.Cor.Preta));
+            imprimirConjunto(partida.PecasCapturadas(Enums.Cor.Preta));
             Console.ForegroundColor = aux;
             Console.WriteLine();
         }
