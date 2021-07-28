@@ -22,7 +22,7 @@ namespace Xadrez_Jogo.xadrez
          */
         public override string ToString()
         {
-            return "D";
+            return "P";
         }
 
         /*
@@ -78,7 +78,7 @@ namespace Xadrez_Jogo.xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
 
-                // #jogadaespecial en passant
+               /* // #jogadaespecial en passant
                 if (Posicao.Linha == 3)
                 {
                     Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
@@ -91,7 +91,7 @@ namespace Xadrez_Jogo.xadrez
                     {
                         mat[direita.Linha - 1, direita.Coluna] = true;
                     }
-                }
+                }*/
             }
             else
             {
@@ -116,7 +116,7 @@ namespace Xadrez_Jogo.xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
-
+                /*
                 // #jogadaespecial en passant
                 if (Posicao.Linha == 4)
                 {
@@ -130,7 +130,7 @@ namespace Xadrez_Jogo.xadrez
                     {
                         mat[direita.Linha + 1, direita.Coluna] = true;
                     }
-                }
+                }*/
             }
 
             return mat;

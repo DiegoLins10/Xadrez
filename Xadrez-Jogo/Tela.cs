@@ -80,7 +80,7 @@ namespace Xadrez_Jogo.tabuleiro
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("  a b c d e f g h");
         }
 
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] possicoesPossiveis)
@@ -108,7 +108,7 @@ namespace Xadrez_Jogo.tabuleiro
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("  a b c d e f g h");
             Console.BackgroundColor = fundoOriginal;
         }
 
